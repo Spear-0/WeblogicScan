@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # _*_ coding:utf-8 _*_
+import requests
+requests.packages.urllib3.disable_warnings()
 
 class ManageProcessor(object):
     PLUGINS = {}

@@ -1,6 +1,6 @@
 # WeblogicScan
 
-修改自https://github.com/dr0op/WeblogicScan的项目，新增了https的支持。
+修改自https://github.com/dr0op/WeblogicScan 的项目，新增了https的支持。
 
 # DEFF
 

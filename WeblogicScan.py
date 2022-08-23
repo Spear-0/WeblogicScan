@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # _*_ coding:utf-8 _*_
 
-import sys
+import sys, argparse
 
 from app.main import pentest
 from app.platform import Color
 
-version = "1.3.1"
+version = "1.4.0"
 banner='''
 __        __   _     _             _        ____                  
 \ \      / /__| |__ | | ___   __ _(_) ___  / ___|  ___ __ _ _ __  
@@ -14,14 +14,23 @@ __        __   _     _             _        ____
   \ V  V /  __/ |_) | | (_) | (_| | | (__   ___) | (_| (_| | | | |
    \_/\_/ \___|_.__/|_|\___/ \__, |_|\___| |____/ \___\__,_|_| |_|
                              |___/ 
-      From WeblogicScan V1.2 Fixed by Ra1ndr0op: drops.org.cn | V {} 
+      From WeblogicScan V1.2 Fixed by BaiZhu | V {} 
 '''.format(version)
 print(Color.OKYELLOW+banner+Color.ENDC)
-print('Welcome To WeblogicScan !!')
-if len(sys.argv)<3:
-    print('Usage: python3 WeblogicScan [IP] [PORT]')
-else:
-    ip = sys.argv[1]
-    port = int(sys.argv[2])
-    pentest(ip,port)
+# print('Welcome To WeblogicScan !!')
+
+parse = argparse.ArgumentParser()
+parse.add_argument("-u", "--host", type=str, help="Target Host", required=True)
+parse.add_argument("-p", "--port", type=int, help="Target Port", required=True)
+parse.add_argument("-s", "--ssl", type=bool, help="Is https", required=False, default=False)
+args = parse.parse_args()
+# print(args)
+# if len(sys.argv)<3:
+#     print('Usage: python3 WeblogicScan [IP] [PORT]')
+# else:
+#     ip = sys.argv[1]
+#     port = int(sys.argv[2])
+#     pentest(ip,port)
+protocol = "https://" if args.ssl else "http://"
+pentest(args.host, args.port, protocol)
 

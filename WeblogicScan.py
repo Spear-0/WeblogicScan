@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # _*_ coding:utf-8 _*_
 
-import sys, argparse
+import argparse
 
 from app.main import pentest
 from app.platform import Color
@@ -24,13 +24,6 @@ parse.add_argument("-u", "--host", type=str, help="Target Host", required=True)
 parse.add_argument("-p", "--port", type=int, help="Target Port", required=True)
 parse.add_argument("-s", "--ssl", type=bool, help="Is https", required=False, default=False)
 args = parse.parse_args()
-# print(args)
-# if len(sys.argv)<3:
-#     print('Usage: python3 WeblogicScan [IP] [PORT]')
-# else:
-#     ip = sys.argv[1]
-#     port = int(sys.argv[2])
-#     pentest(ip,port)
 protocol = "https://" if args.ssl else "http://"
 pentest(args.host, args.port, protocol)
 

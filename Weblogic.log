@@ -2,3 +2,6 @@
 2022-08-24 11:58:41,097 [-]Target weblogic not detected CVE-2017-10271
 2022-08-24 11:58:41,111 [-]Target weblogic not detected CVE-2017-3506
 2022-08-24 11:58:41,591 [-]Target weblogic not detected CVE-2018-2894
+2022-08-24 11:58:51,808 [+]The target weblogic has a JAVA deserialization vulnerability:CVE-2018-2628
+2022-08-24 11:59:01,812 [-]Target weblogic not detected CVE-2018-2893
+2022-08-24 12:00:16,388 [-]Target weblogic not detected CVE-2016-3510

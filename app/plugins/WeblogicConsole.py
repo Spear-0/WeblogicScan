@@ -11,9 +11,6 @@ logging.basicConfig(filename='Weblogic.log',
                         format='%(asctime)s %(message)s',
                         filemode="w", level=logging.INFO)
 
-url = "http://192.168.3.32:7001/"
-
-
 @ManageProcessor.plugin_register('weblogic-console')
 class WeblogicCosole(object):
     headers = {'user-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36'}

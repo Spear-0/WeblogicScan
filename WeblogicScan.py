@@ -17,7 +17,6 @@ __        __   _     _             _        ____
       From WeblogicScan V1.2 Fixed by BaiZhu | V {} 
 '''.format(version)
 print(Color.OKYELLOW+banner+Color.ENDC)
-# print('Welcome To WeblogicScan !!')
 
 parse = argparse.ArgumentParser()
 parse.add_argument("-u", "--host", type=str, help="Target Host", required=True)

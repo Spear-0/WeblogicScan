@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # _*_ coding:utf-8 _*_
+from socket import socket
 import requests
 requests.packages.urllib3.disable_warnings()
 
@@ -7,20 +8,24 @@ class ManageProcessor(object):
     PLUGINS = {}
 
     def process(self,ip,port, protocol, plugins=()):
-        if plugins is ():
+        if plugins == ():
             for plugin_name in self.PLUGINS.keys():
                 try:
                     print(Color.OKYELLOW+"[*]开始检测",plugin_name+Color.ENDC)
                     self.PLUGINS[plugin_name]().process(ip, port, protocol)
+                except KeyboardInterrupt as e:
+                    print(Color.WARNING+"[-]{} 未成功检测，用户主动退出".format(plugin_name)+Color.ENDC)
                 except:
-                    print (Color.WARNING+"[-]{} 未成功检测，请检查网络连接或或目标存在负载中间件".format(plugin_name)+Color.ENDC)
+                    print (Color.WARNING+"[-]{} 未成功检测，请检查网络连接或目标是否存在负载中间件".format(plugin_name)+Color.ENDC)
         else:
             for plugin_name in plugins:
                 try:
                     print("[*]开始检测 ",self.PLUGINS[plugin_name])
                     self.PLUGINS[plugin_name]().process(ip, port, protocol)
+                except KeyboardInterrupt as e:
+                    print(Color.WARNING+"[-]{} 未成功检测，用户主动退出".format(plugin_name)+Color.ENDC)
                 except:
-                    print ("[-]{}未成功检测，请检查网络连接或或目标存在负载中间".format(self.PLUGINS[plugin_name]))
+                    print (Color.WARNING+"[-]{} 未成功检测，请检查网络连接或目标是否存在负载中间件".format(plugin_name)+Color.ENDC)
         return
 
     @classmethod
